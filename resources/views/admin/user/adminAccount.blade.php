@@ -27,15 +27,15 @@
                     <tbody class="fs-5 border border-rounded">
                         @foreach ($userData as $item)
                             <tr>
-                                <th>{{ $item->id }}</th>
-                                <th>{{ $item->name }}</th>
-                                <th>{{ $item->phone }}</th>
-                                <th>{{ $item->email }}</th>
-                                <th>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>
                                     <a href="{{ route('admin#detailAdminAcc', $item->id) }}">
                                         <i class="fa-solid fa-circle-info text-dark"></i>
                                     </a>
-                                </th>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

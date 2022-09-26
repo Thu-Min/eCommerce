@@ -18,10 +18,11 @@
     <style>
         .vl{
             border-left: 1px solid grey;
-              height: 100%;
-              position: absolute;
-              left: 12%;
-              top: 0;
+            height: 100%;
+            position: absolute;
+            left: 12%;
+            top: 0;
+            margin-right: 0px;
         }
     </style>
 
@@ -35,52 +36,52 @@
                 <div class="col-2">
                     <div class="d-flex flex-column flex-shrink-0 bg-light " style="width: 200px; height: 100%;">
                         <a href="#" class="d-flex link-dark text-decoration-none">
-                        <span class="fs-2 ms-3 mt-3">Admin Panel</span>
+                            <span class="fs-2 ms-3 mt-3">Admin Panel</span>
                         </a>
                         <hr>
                         <ul class="nav nav-pills flex-column mb-auto">
-                        <li class="nav-item my-3 fs-5">
-                            <a href="{{ route('admin#profile') }}" class="nav-link link-primary text-dark">
-                                <i class="fa-solid fa-user-tie"></i>
-                                Profile
-                            </a>
-                        </li>
-                        <li class="nav-item my-3 fs-5">
-                            <a href="{{ route('admin#userAccount') }}" class="nav-link link-primary text-dark">
-                                <i class="fa-solid fa-users"></i>
-                                Customers
-                            </a>
-                        </li>
-                        <li class="nav-item my-3 fs-5">
-                            <a href="#" class="nav-link link-primary text-dark">
-                                <i class="fa-solid fa-shirt"></i>
-                                Products
-                            </a>
-                        </li>
-                        <li class="nav-item my-3 fs-5">
-                            <a href="#" class="nav-link link-primary text-dark">
-                                <i class="fa-solid fa-clipboard-list"></i>
-                                Categories
-                            </a>
-                        </li>
-                        <li class="nav-item my-3 fs-5">
-                            <a href="#" class="nav-link link-primary text-dark">
-                                <i class="fa-solid fa-circle-dollar-to-slot"></i>
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item my-3 fs-5">
-                            <a href="#" class="nav-link link-primary text-dark">
-                                <i class="fa-solid fa-headphones-simple"></i>
-                                Contact
-                            </a>
-                        </li>
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
                             <li class="nav-item my-3 fs-5">
-                                <button type="submit" class="btn nav-link text-dark"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                                <a href="{{ route('admin#profile') }}" class="nav-link link-primary text-dark">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                    Profile
+                                </a>
                             </li>
-                        </form>
+                            <li class="nav-item my-3 fs-5">
+                                <a href="{{ route('admin#userAccount') }}" class="nav-link link-primary text-dark">
+                                    <i class="fa-solid fa-users"></i>
+                                    Customers
+                                </a>
+                            </li>
+                            <li class="nav-item my-3 fs-5">
+                                <a href="#" class="nav-link link-primary text-dark">
+                                    <i class="fa-solid fa-shirt"></i>
+                                    Products
+                                </a>
+                            </li>
+                            <li class="nav-item my-3 fs-5">
+                                <a href="{{ route('admin#categoryPage') }}" class="nav-link link-primary text-dark">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                    Categories
+                                </a>
+                            </li>
+                            <li class="nav-item my-3 fs-5">
+                                <a href="#" class="nav-link link-primary text-dark">
+                                    <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="nav-item my-3 fs-5">
+                                <a href="#" class="nav-link link-primary text-dark">
+                                    <i class="fa-solid fa-headphones-simple"></i>
+                                    Contact
+                                </a>
+                            </li>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <li class="nav-item my-3 fs-5">
+                                    <button type="submit" class="btn nav-link text-dark"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                                </li>
+                            </form>
                         </ul>
                     </div>
                     <div class="vl"></div>

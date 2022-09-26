@@ -4,6 +4,7 @@ use App\Http\Middleware\AdminCheck;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('customer.home');
@@ -42,4 +43,10 @@ Route::middleware([AdminCheck::class])->prefix('admin')->namespace('Admin')->gro
     Route::get('account/adminAccount', [UserController::class, 'adminAccount'])->name('admin#adminAccount');
     Route::get('account/detailUserAcc/{id}', [UserController::class, 'detailUserAcc'])->name('admin#detailUserAcc');
     Route::get('account/detailAdminAcc/{id}', [UserController::class, 'detailAdminAcc'])->name('admin#detailAdminAcc');
+
+    Route::get('category', [CategoryController::class, 'categoryPage'])->name('admin#categoryPage');
+    Route::post('addCategory', [CategoryController::class, 'addCategory'])->name('admin#addCategory');
+    Route::post('deleteCategory/{id}', [CategoryController::class, 'deleteCategory'])->name('admin#deleteCategory');
+    Route::get('editCategoryPage/{id}', [CategoryController::class, 'editCategoryPage'])->name('admin#editCategoryPage');
+    Route::post('editCategory/{id}', [CategoryController::class, 'editCategory'])->name('admin#editCategory');
 });
