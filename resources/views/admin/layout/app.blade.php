@@ -53,7 +53,7 @@
                                 </a>
                             </li>
                             <li class="nav-item my-3 fs-5">
-                                <a href="#" class="nav-link link-primary text-dark">
+                                <a href="{{ route('admin#productPage') }}" class="nav-link link-primary text-dark">
                                     <i class="fa-solid fa-shirt"></i>
                                     Products
                                 </a>
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="col-10">
-                    @yield('content');
+                    @yield('content')
                 </div>
             </div>
         </div>
