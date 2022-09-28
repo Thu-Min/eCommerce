@@ -53,6 +53,9 @@ Route::middleware([AdminCheck::class])->prefix('admin')->namespace('Admin')->gro
 
     Route::get('product', [ProductController::class, 'productPage'])->name('admin#productPage');
     Route::get('addProductPage', [ProductController::class, 'addProductPage'])->name('admin#addProductPage');
-    Route::post('addProduct', [ProductController::class, 'addProduct'])->name('admin#addProduct');
+    Route::post('addProduct/{id}', [ProductController::class, 'addProduct'])->name('admin#addProduct');
     Route::post('deleteProduct/{id}', [ProductController::class, 'deleteProduct'])->name('admin#deleteProduct');
+    Route::get('editProductPage/{id}', [ProductController::class, 'editProductPage'])->name('admin#editProductPage');
+    Route::post('editProduct/{id}', [ProductController::class, 'editProduct'])->name('admin#editProduct');
+    Route::get('detailProduct/{id}', [ProductController::class, 'detailProduct'])->name('admin#detailProduct');
 });

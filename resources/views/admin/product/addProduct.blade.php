@@ -9,7 +9,7 @@
                 <div class="col fs-5">
                 <div class="card">
                     <div class="card-body py-5 px-md-5">
-                        <form action="{{ route('admin#addProduct') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin#addProduct', Auth::user()->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-outline mb-4">
                                 <label class="form-label" for="form2Example1">Product Name</label>

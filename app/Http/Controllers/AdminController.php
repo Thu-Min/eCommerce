@@ -43,7 +43,7 @@ class AdminController extends Controller
     }
 
     // change password
-    public function changePassword(Request $request,$id){
+    public function changePassword(Request $request, $id){
         $oldPass = $request->oldPassword;
         $newPass = $request->newPassword;
         $confirmPass = $request->password_confirmation;
