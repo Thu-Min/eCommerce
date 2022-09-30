@@ -2,34 +2,35 @@
 
 use App\Http\Middleware\AdminCheck;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return view('customer.home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('user#home');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        if(Auth::check()){
-            if(Auth::user()->role == 'admin') {
-                return redirect()->route('admin#profile');
-            } else if (Auth::user()->role == ''){
-                return view('customer.home');
-            }
-        }
-    })->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'auth'])->name('auth');
+    // Route::get('/dashboard', function () {
+    //     if(Auth::check()){
+    //         if(Auth::user()->role == 'admin') {
+    //             return redirect()->route('admin#profile');
+    //         } else if (Auth::user()->role == ''){
+
+    //             return view('customer.home');
+    //         }
+    //     }
+    // })->name('dashboard');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 // admin
 Route::middleware([AdminCheck::class])->prefix('admin')->namespace('Admin')->group(function (){
@@ -58,4 +59,11 @@ Route::middleware([AdminCheck::class])->prefix('admin')->namespace('Admin')->gro
     Route::get('editProductPage/{id}', [ProductController::class, 'editProductPage'])->name('admin#editProductPage');
     Route::post('editProduct/{id}', [ProductController::class, 'editProduct'])->name('admin#editProduct');
     Route::get('detailProduct/{id}', [ProductController::class, 'detailProduct'])->name('admin#detailProduct');
+});
+
+// user
+Route::prefix('user')->namespace('User')->group(function() {
+    Route::get('/home', [HomeController::class, 'index'])->name('user#home');
+
+    Route::get('shop', [HomeController::class, 'shop'])->name('user#shopPage');
 });

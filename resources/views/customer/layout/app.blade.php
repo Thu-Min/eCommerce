@@ -10,36 +10,25 @@
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <style>
-        body{
-            background-color: rgb(216, 216, 216);
-        }
-    </style>
 </head>
 <body>
 {{-- navbar --}}
-    <nav class="navbar navbar-expand sticky-top bg-white px-5 py-3">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand bg-dark sticky-top px-5 pt-3">
+        <div class="container-fluid ">
             <div class="me-0 p-0" style="margin-left: 250px">
-                <a href="#" class="navbar-brand fs-2" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Shopper</a>
+                <a href="#" class="navbar-brand fs-2 text-white" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Shopper</a>
             </div>
 
             <div class="" style="font-size: 17px" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
                 <ul class="nav  justify-content-center">
                     <li class="nav-item">
-                        <a href="" class="nav-link text-dark link-primary">Home</a>
+                        <a href="{{ route('user#home') }}" class="nav-link text-white link-primary">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link text-dark link-primary">Shop</a>
+                        <a href="{{ route('user#shopPage') }}" class="nav-link text-white link-primary">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link text-dark link-primary">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-dark link-primary">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link text-dark link-primary">Search</a>
+                        <a href="" class="nav-link text-white link-primary">Contact</a>
                     </li>
 
                     @if (Route::has('login'))
@@ -48,12 +37,14 @@
                                 <li class="nav-item">
                                     <form action="{{ route('logout') }}" method="post">
                                         @csrf
-                                        <button class="btn nav-link text-dark link-danger" type="submit">{{ auth::user()->name; }}</button>
+                                            <button class="btn nav-link text-white link-danger" type="submit">
+                                                {{ auth::user()->name; }} <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                            </button>
                                     </form>
                                 </li>
                             @else
                             <li class="nav-item">
-                                <a href="{{ route('login') }}" class="nav-link text-dark link-info"><i class="fa-regular fa-user"></i></a>
+                                <a href="{{ route('login') }}" class="nav-link text-white link-info"><i class="fa-regular fa-user"></i></a>
                             </li>
                             @endauth
                         </div>
@@ -62,6 +53,7 @@
             </div>
         </div>
     </nav>
+{{-- navbar --}}
 
     @yield('content')
 

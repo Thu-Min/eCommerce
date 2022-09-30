@@ -80,7 +80,6 @@ class ProductController extends Controller
 
     // product detail page
     public function detailProduct($id){
-
         $data = Product::select('products.*', 'categories.category_id', 'categories.cateogry_name')
                     ->join('categories', 'products.category_id', 'categories.category_id')
                     ->where('product_id', $id)
@@ -90,6 +89,7 @@ class ProductController extends Controller
                     ->join('users', 'products.admin_id', 'users.id')
                     ->where('product_id', $id)
                     ->first();
+
         return view('admin.product.detailProduct')->with(['data' => $data, 'creator' => $creator]);
     }
 
