@@ -1,4 +1,4 @@
-@extends('admin.layout.app')
+@extends('customer.layout.app')
 
 @section('content')
 <section>
@@ -12,14 +12,11 @@
                             class="w-100 h-100">
                     </div>
                 </div>
-                <a href="{{ route('admin#productPage') }}">
-                    <button class="btn btn-dark">Back</button>
-                </a>
             </div>
             <div class="col-lg-6">
                 <div class="row">
                     <div class="card mb-4">
-                        <div class="card-body">
+                        <div class="card-body fs-5">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Product Name</p>
@@ -43,7 +40,7 @@
                                     <p class="mb-0">Price</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $data->price }}</p>
+                                    <p class="text-muted mb-0">{{ $data->price }} $</p>
                                 </div>
                             </div>
                             <hr>
@@ -56,23 +53,12 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Created At</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $data->created_at }}</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Created By</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $creator->name }}</p>
-                                </div>
-                            </div>
+                            <a href="{{ route('user#shopPage') }}">
+                                <button class="btn btn-dark btn-lg">Back</button>
+                            </a>
+                            <a href="{{ route('user#addToCart', $data->product_id) }}">
+                                <button class="btn btn-dark float-end btn-lg">Add to Cart</button>
+                            </a>
                         </div>
                     </div>
                 </div>

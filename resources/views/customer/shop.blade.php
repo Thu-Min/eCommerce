@@ -24,7 +24,9 @@
                         <button class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                     </div>
                     <div class="list-group list-group-flush mx-3 mt-4">
-                        <button class="btn btn-dark"><i class="fa-solid fa-cart-shopping"></i> Cart</button>
+                        <a href="{{ route('user#cart') }}">
+                            <button class="btn btn-dark w-100" type="button"><i class="fa-solid fa-cart-shopping"></i> Cart</button>
+                        </a>
                     </div>
                     <div class="list-group list-group-flush mx-3 mt-4">
                         <button class="btn btn-dark"><i class="fa-solid fa-sack-dollar"></i> Transaction</button>
@@ -37,16 +39,16 @@
                 @foreach ($product as $item)
                 <div class="col-3">
                     <div class="card h-100">
-                            <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp" class="card-img-top"
-                        alt="Skyscrapers" />
+                            <img src="{{ asset('product_album/' . $item->image) }}" alt="" style="height: 220px;">
                         <div class="card-body">
                             <h5 class="card-title text-center fs-3 mb-3">{{ $item->product_name }}</h5>
                             <div class="text-center">
-                                <button class="card-text btn btn-outline-primary">
-                                    {{ $item->price }}
-                                </button> |
-                                <button class="btn btn-outline-success">Details</button> |
-                                <button class="btn btn-outline-dark">Add to Cart</button>
+                                <a href="{{ route('user#detail', $item->product_id) }}">
+                                    <button class="btn btn-outline-success">Details</button> |
+                                </a>
+                                <a href="{{ route('user#addToCart', $item->product_id) }}">
+                                    <button class="btn btn-outline-dark">Add to Cart</button>
+                                </a>
                             </div>
                         </div>
                         <div class="card-footer">

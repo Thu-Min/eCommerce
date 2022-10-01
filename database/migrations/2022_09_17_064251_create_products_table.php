@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('admin_id');
             $table->string('product_name');
+            $table->integer('price');
             $table->string('description');
             $table->string('image');
             $table->timestamps();

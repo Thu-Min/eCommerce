@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\AdminCheck;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -16,16 +17,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'auth'])->name('auth');
-    // Route::get('/dashboard', function () {
-    //     if(Auth::check()){
-    //         if(Auth::user()->role == 'admin') {
-    //             return redirect()->route('admin#profile');
-    //         } else if (Auth::user()->role == ''){
-
-    //             return view('customer.home');
-    //         }
-    //     }
-    // })->name('dashboard');
 });
 
 Auth::routes();
@@ -66,4 +57,9 @@ Route::prefix('user')->namespace('User')->group(function() {
     Route::get('/home', [HomeController::class, 'index'])->name('user#home');
 
     Route::get('shop', [HomeController::class, 'shop'])->name('user#shopPage');
+    Route::get('detail/{id}', [HomeController::class, 'detail'])->name('user#detail');
+
+    Route::get('addToCart/{id}', [CartController::class, 'addToCart'])->name('user#addToCart');
+    Route::post('addToCartP/{id}', [CartController::class, 'addToCartP'])->name('user#addToCartP');
+    Route::get('cart', [CartController::class, 'cart'])->name('user#cart');
 });

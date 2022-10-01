@@ -27,6 +27,11 @@
                             </div>
 
                             <div class="form-outline mb-4">
+                                <label for="" class="form-label">Price</label>
+                                <input type="text" class="form-control" name="price">
+                            </div>
+
+                            <div class="form-outline mb-4">
                                 <label class="form-label" for="form2Example2">Image</label>
                                 <input type="file" id="form2Example2" class="form-control" name="image"/>
                             </div>
@@ -37,6 +42,9 @@
                             </div>
 
                             <!-- Submit button -->
+                            <a href="{{ route('admin#productPage') }}">
+                                <button type="button" class="btn btn-primary btn-block btn-lg float-start">Back</button>
+                            </a>
                             <button type="submit" class="btn btn-primary btn-block btn-lg float-end">Add</button>
                         </form>
                     </div>

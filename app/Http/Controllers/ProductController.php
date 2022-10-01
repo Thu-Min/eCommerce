@@ -99,6 +99,7 @@ class ProductController extends Controller
             'category_id' => $request->categoryId,
             'admin_id' => Auth::user()->id,
             'product_name' => $request->name,
+            'price' => $request->price,
             'image' => $filename,
             'description' => $request->description,
         ];

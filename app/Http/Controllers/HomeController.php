@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    // home page
     public function auth(){
         if(Auth::check()) {
             if(Auth::user()->role == 'admin') {
@@ -23,22 +24,8 @@ class HomeController extends Controller
                     }
         }
     }
-    // User Controller
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    // home page
     public function index()
     {
         $userCount = User::count();
@@ -54,5 +41,15 @@ class HomeController extends Controller
         $productData = Product::get();
 
         return view('customer.shop')->with(['category'=>$categoryData, 'product'=>$productData]);
+    }
+
+    // detail page
+    public function detail($id){
+        $data = Product::select('products.*', 'categories.category_id', 'categories.cateogry_name')
+                    ->join('categories', 'products.category_id', 'categories.category_id')
+                    ->where('product_id', $id)
+                    ->first();
+
+        return view('customer.detail')->with(['data' => $data]);
     }
 }
