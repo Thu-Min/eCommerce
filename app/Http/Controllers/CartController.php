@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -33,23 +34,25 @@ class CartController extends Controller
                 ->join('users', 'carts.user_id', 'users.id')
                 ->where('user_id', $id)
                 ->first();
-        // dd($userData->id);
+
         $product = Cart::select('carts.*', 'products.product_name', 'products.price', 'products.image')
                 ->join('products', 'carts.product_id', 'products.product_id')
                 ->where('user_id', $id)
                 ->paginate(7);
 
-        $totalPrice = Cart::select('carts.*', 'product.price')
+        $price = Cart::select('carts.*', 'product.price')
                 ->join('products', 'carts.product_id', 'products.product_id')
                 ->where('user_id', $id)
-                ->sum('products.price');
-                // ->get();
-        // dd($totalPrice);
+                ->sum(DB::raw('products.price * carts.quantity'));
 
-        // dd($product->toArray());
+        return view('customer.cart')->with(['product' => $product, 'userData' => $userData, 'totalPrice' => $price]);
+    }
 
-        // dd($data->toArray(), $product->toArray());
-        return view('customer.cart')->with(['product' => $product, 'userData' => $userData, 'totalPrice' => $totalPrice]);
+    // delete cart process
+    public function deleteCart($id){
+        Cart::where('product_id', $id)->delete();
+
+        return back()->with(['deleted' => 'Item deleted from cart list!']);
     }
 
     // get add to cart data

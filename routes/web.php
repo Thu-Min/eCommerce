@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
@@ -62,4 +63,8 @@ Route::prefix('user')->namespace('User')->group(function() {
     Route::get('addToCart/{id}', [CartController::class, 'addToCart'])->name('user#addToCart');
     Route::post('addToCartP/{id}', [CartController::class, 'addToCartP'])->name('user#addToCartP');
     Route::get('cart/{id}', [CartController::class, 'cart'])->name('user#cart');
+    Route::get('deteleCart/{id}', [CartController::class, 'deleteCart'])->name('user#deleteCart');
+
+    Route::get('payment/{id}', [OrderController::class, 'payment'])->name('user#payment');
+    Route::post('paymentProcess/{id}', [OrderController::class, 'paymentPorcess'])->name('user#paymentProcess');
 });

@@ -5,8 +5,15 @@
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12">
+                @if (Session::has('deleted'))
+                <div class="alert alert-success alert-dismissible fade show p-3" role="alert">
+                    {{ Session::get('deleted') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                     <div class="card-body p-0">
+
                         <div class="row g-0">
                             <div class="col-lg-8">
                                 <div class="p-5">
@@ -26,22 +33,7 @@
                                             </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                                 <h6 class="text-muted">{{ $item->product_name }}</h6>
-                                                {{-- <h6 class="text-black mb-0">Cotton T-shirt</h6> --}}
                                             </div>
-                                            {{-- <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-
-                                                <input id="form1" min="0" name="quantity" value="1" type="number"
-                                                    class="form-control form-control-sm" />
-
-                                                <button class="btn btn-link px-2"
-                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                    <i class="fas fa-plus"></i>
-                                                </button>
-                                            </div> --}}
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                 <h6 class="mb-0">{{ $item->quantity }}</h6>
                                             </div>
@@ -49,7 +41,11 @@
                                                 <h6 class="mb-0">$ {{ $item->price * $item->quantity }}</h6>
                                             </div>
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
+                                                <form action="{{ route('user#deleteCart', $item->product_id) }}">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     @endforeach
@@ -94,9 +90,12 @@
                                     <h5>$ {{ $totalPrice - 20 }}</h5>
                                     </div>
 
-                                    <button type="button" class="btn btn-dark btn-block btn-lg"
-                                    data-mdb-ripple-color="dark">Payment</button>
-
+                                    <a href="{{ route('user#payment', Auth::user()->id) }}">
+                                        <button type="button" class="btn btn-dark btn-block btn-lg"
+                                        data-mdb-ripple-color="dark">
+                                            Payment
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
