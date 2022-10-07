@@ -24,7 +24,7 @@
                         <button class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                     </div>
                     <div class="list-group list-group-flush mx-3 mt-4">
-                        <a href="{{ route('user#cart') }}">
+                        <a href="{{ route('user#cart', Auth::user()->id) }}">
                             <button class="btn btn-dark w-100" type="button"><i class="fa-solid fa-cart-shopping"></i> Cart</button>
                         </a>
                     </div>
@@ -35,6 +35,12 @@
             </nav>
         </div>
         <div class="col-10 mt-4">
+            @if (Session::has('added'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('added') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="row g-4">
                 @foreach ($product as $item)
                 <div class="col-3">

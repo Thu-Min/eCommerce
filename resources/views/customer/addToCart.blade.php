@@ -55,7 +55,7 @@
                                 </div>
                                 <hr>
                                 <a href="{{ route('user#shopPage') }}">
-                                    <button class="btn btn-dark btn-lg">Back</button>
+                                    <button class="btn btn-dark btn-lg" type="button">Back</button>
                                 </a>
 
                                     @csrf

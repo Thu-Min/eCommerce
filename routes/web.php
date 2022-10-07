@@ -61,5 +61,5 @@ Route::prefix('user')->namespace('User')->group(function() {
 
     Route::get('addToCart/{id}', [CartController::class, 'addToCart'])->name('user#addToCart');
     Route::post('addToCartP/{id}', [CartController::class, 'addToCartP'])->name('user#addToCartP');
-    Route::get('cart', [CartController::class, 'cart'])->name('user#cart');
+    Route::get('cart/{id}', [CartController::class, 'cart'])->name('user#cart');
 });
