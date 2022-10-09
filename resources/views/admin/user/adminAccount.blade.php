@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="card p-3">
-                <table class="table table-hover">
+                <table class="table table-hover text-center">
                     <thead class="fs-4">
                         <tr>
                             <th>Id</th>

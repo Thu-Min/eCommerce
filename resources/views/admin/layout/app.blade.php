@@ -65,13 +65,13 @@
                                 </a>
                             </li>
                             <li class="nav-item my-3 fs-5">
-                                <a href="#" class="nav-link link-primary text-dark">
+                                <a href="{{ route('admin#order') }}" class="nav-link link-primary text-dark">
                                     <i class="fa-solid fa-circle-dollar-to-slot"></i>
                                     Orders
                                 </a>
                             </li>
                             <li class="nav-item my-3 fs-5">
-                                <a href="#" class="nav-link link-primary text-dark">
+                                <a href="{{ route('admin#contact') }}" class="nav-link link-primary text-dark">
                                     <i class="fa-solid fa-headphones-simple"></i>
                                     Contact
                                 </a>

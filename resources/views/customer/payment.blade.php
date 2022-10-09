@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-check">
-                                        <input class="form-check-input fs-4" type="checkbox" value="" id="flexCheckDefault" name="creditCard">
+                                        <input class="form-check-input fs-4" type="checkbox" id="flexCheckDefault" name="method" value="creditCard">
                                         <label class="form-check-label" for="flexCheckDefault"></label>
                                     </div>
                                     <input type="text" class="form-control" placeholder="CVC" style="width: 70px;" />
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-check">
-                                        <input class="form-check-input fs-4" type="checkbox" value="" id="flexCheckDefault" name="visaCard">
+                                        <input class="form-check-input fs-4" type="checkbox" id="flexCheckDefault" name="method" value="visaCard">
                                         <label class="form-check-label" for="flexCheckDefault"></label>
                                     </div>
                                     <input type="text" class="form-control" placeholder="CVC" style="width: 70px;" />
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-check">
-                                        <input class="form-check-input fs-4" type="checkbox" value="" id="flexCheckDefault" name="masterCard">
+                                        <input class="form-check-input fs-4" type="checkbox" id="flexCheckDefault" name="method" value="masterCard">
                                         <label class="form-check-label" for="flexCheckDefault"></label>
                                     </div>
                                     <input type="text" class="form-control" placeholder="CVC" style="width: 70px;" />
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-check">
-                                        <input class="form-check-input fs-4" type="checkbox" value="" id="flexCheckDefault" name="paypal">
+                                        <input class="form-check-input fs-4" type="checkbox" id="flexCheckDefault" name="method" value="paypal">
                                         <label class="form-check-label" for="flexCheckDefault"></label>
                                     </div>
                                     <input type="text" class="form-control" placeholder="CVC" style="width: 70px;" />
@@ -91,7 +91,7 @@
 
                             <div class="form-outline mt-5">
                                 <label class="form-label" for="formControlLg">Email address</label>
-                                <input type="text" id="formControlLg" class="form-control form-control-lg" value="{{ $userData->email }}"/>
+                                <input type="text" id="formControlLg" class="form-control form-control-lg" value="{{ $userData->email }}" name="email"/>
                             </div>
                             <div class="mt-3">
                                 <a href="{{ route('user#cart', Auth::user()->id) }}">

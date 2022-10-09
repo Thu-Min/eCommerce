@@ -28,7 +28,7 @@
                         <a href="{{ route('user#shopPage') }}" class="nav-link text-white link-primary">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link text-white link-primary">Contact</a>
+                        <a href="{{ route('user#contactPage') }}" class="nav-link text-white link-primary">Contact</a>
                     </li>
 
                     @if (Route::has('login'))

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
@@ -51,6 +52,10 @@ Route::middleware([AdminCheck::class])->prefix('admin')->namespace('Admin')->gro
     Route::get('editProductPage/{id}', [ProductController::class, 'editProductPage'])->name('admin#editProductPage');
     Route::post('editProduct/{id}', [ProductController::class, 'editProduct'])->name('admin#editProduct');
     Route::get('detailProduct/{id}', [ProductController::class, 'detailProduct'])->name('admin#detailProduct');
+
+    Route::get('order', [OrderController::class, 'order'])->name('admin#order');
+
+    Route::get('contact', [ContactController::class, 'adminContact'])->name('admin#contact');
 });
 
 // user
@@ -67,4 +72,9 @@ Route::prefix('user')->namespace('User')->group(function() {
 
     Route::get('payment/{id}', [OrderController::class, 'payment'])->name('user#payment');
     Route::post('paymentProcess/{id}', [OrderController::class, 'paymentPorcess'])->name('user#paymentProcess');
+
+    Route::get('transactionPage/{id}', [OrderController::class, 'transactionPage'])->name('user#transactionPage');
+
+    Route::get('contactPage', [ContactController::class, 'contactPage'])->name('user#contactPage');
+    Route::post('contact', [ContactController::class, 'contact'])->name('user#contact');
 });

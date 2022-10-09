@@ -29,7 +29,9 @@
                         </a>
                     </div>
                     <div class="list-group list-group-flush mx-3 mt-4">
-                        <button class="btn btn-dark"><i class="fa-solid fa-sack-dollar"></i> Transaction</button>
+                        <a href="{{ route('user#transactionPage', Auth::user()->id) }}">
+                            <button class="btn btn-dark"><i class="fa-solid fa-sack-dollar"></i> Transaction</button>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -38,6 +40,12 @@
             @if (Session::has('added'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ Session::get('added') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if (Session::has('confirmed'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ Session::get('confirmed') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
