@@ -37,10 +37,15 @@ class HomeController extends Controller
 
     // shop page
     public function shop(){
-        $categoryData = Category::get();
-        $productData = Product::get();
+        if(Auth::check()){
+            $categoryData = Category::get();
+            $productData = Product::paginate(8);
 
-        return view('customer.shop')->with(['category'=>$categoryData, 'product'=>$productData]);
+            return view('customer.shop')->with(['category'=>$categoryData, 'product'=>$productData]);
+        } else {
+            return redirect()->route('login');
+        }
+
     }
 
     // detail page

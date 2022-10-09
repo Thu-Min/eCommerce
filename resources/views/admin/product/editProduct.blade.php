@@ -40,7 +40,7 @@
 
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form2Example2">Image</label>
-                                    <input type="file" id="form2Example2" class="form-control" name="image"/>
+                                    <input type="file" id="form2Example2" class="form-control" name="image" required/>
                                 </div>
 
                                 <div class="form-outline mb-4">

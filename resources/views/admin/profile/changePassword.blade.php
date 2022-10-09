@@ -14,7 +14,7 @@
                 @csrf
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example4cg" class="form-control form-control-lg @error('oldPassword') is-invalid @enderror" placeholder="Old Password" name="oldPassword" autocomplete="new-password" />
+                        <input type="password" id="form3Example4cg" class="form-control form-control-lg @error('oldPassword') is-invalid @enderror" placeholder="Old Password" name="oldPassword" required autocomplete="new-password" />
                         <label class="form-label" for="form3Example4cg"></label>
                         @error('oldPassword')
                             <span class="invalid-feedback" role="alert">
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example4cg" class="form-control form-control-lg @error('newPassword') is-invalid @enderror" placeholder="New Password" name="newPassword" autocomplete="new-password" />
+                        <input type="password" id="form3Example4cg" class="form-control form-control-lg @error('newPassword') is-invalid @enderror" placeholder="New Password" name="newPassword" required autocomplete="new-password" />
                         <label class="form-label" for="form3Example4cg"></label>
                         @error('newPassword')
                             <span class="invalid-feedback" role="alert">
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Repeat your new password" name="password_confirmation" autocomplete="new-password"/>
+                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Repeat your new password" name="password_confirmation" required autocomplete="new-password"/>
                         <label class="form-label" for="form3Example4cdg"></label>
                     </div>
 
@@ -45,7 +45,7 @@
                             </button>
                         </a>
                         <button type="submit" class="btn btn-warning btn-block btn-lg gradient-custom-4 text-body mx-1">
-                        Change
+                            Change
                         </button>
                     </div>
 

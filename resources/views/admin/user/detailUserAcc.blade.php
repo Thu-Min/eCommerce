@@ -70,21 +70,32 @@
             </div>
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-md-8 mb-4">
-                        <div class="card mb-4 mb-md-0">
-                            <div class="card-body">
-                                <p class="mb-4">
-                                    <span class="font-italic me-1 fs-5">Cart</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-8">
                         <div class="card mb-4 mb-md-0">
                             <div class="card-body">
                                 <p class="mb-4">
                                     <span class="font-italic me-1 fs-5">Transactions</span>
                                 </p>
+                                <table class="table table-hover text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Amount</th>
+                                            <th>Payment</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($transaction as $item)
+                                            <tr>
+                                                <td>{{ $item->order_id }}</td>
+                                                <td>{{ $item->amount }}</td>
+                                                <td>{{ $item->method }}</td>
+                                                <td>{{ $item->created_at }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

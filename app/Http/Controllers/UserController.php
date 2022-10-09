@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,7 +21,9 @@ class UserController extends Controller
 
         $data = User::where('id', $id)->first();
 
-        return view('admin.user.detailUserAcc')->with(['userData'=>$data]);
+        $transaction = Order::where('user_id', $id)->get();
+
+        return view('admin.user.detailUserAcc')->with(['userData'=>$data, 'transaction' => $transaction]);
     }
 
     // account page (admin)

@@ -77,4 +77,8 @@ Route::prefix('user')->namespace('User')->group(function() {
 
     Route::get('contactPage', [ContactController::class, 'contactPage'])->name('user#contactPage');
     Route::post('contact', [ContactController::class, 'contact'])->name('user#contact');
+
+    Route::get('categorySearch/{id}', [CategoryController::class, 'categorySearch'])->name('user#categorySearch');
+
+    Route::get('productSearch', [ProductController::class, 'productSearch'])->name('user#productSearch');
 });

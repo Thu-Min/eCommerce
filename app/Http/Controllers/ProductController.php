@@ -93,6 +93,15 @@ class ProductController extends Controller
         return view('admin.product.detailProduct')->with(['data' => $data, 'creator' => $creator]);
     }
 
+    // product search (user)
+    public function productSearch(Request $request) {
+        $data = Product::where('product_name', 'like', '%' . $request->keyword . '%')->paginate(8);
+        $data->append($request->all());
+        $category = Category::get();
+
+        return view('customer.shop')->with(['product' => $data, 'category' => $category]);
+    }
+
     // get product details
     private function getProductDetails($request, $filename){
         return [

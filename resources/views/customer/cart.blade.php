@@ -1,9 +1,11 @@
 @extends('customer.layout.app')
 
 @section('content')
+
 <section class="h-100" style="background-color: #d2c9ff;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
+            @if ($status == 1)
             <div class="col-12">
                 @if (Session::has('deleted'))
                 <div class="alert alert-success alert-dismissible fade show p-3" role="alert">
@@ -102,7 +104,14 @@
                     </div>
                 </div>
             </div>
+            @else
+            <div class="row d-flex justify-content-center align-items-center alert alert-danger" style="width: 800px; text-align: center" role="alert">
+                <h1>
+                    No Item in Cart!
+                </h1>
+            </div>
         </div>
     </div>
-  </section>
+</section>
+@endif
 @endsection

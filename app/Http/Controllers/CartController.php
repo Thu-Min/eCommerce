@@ -28,24 +28,26 @@ class CartController extends Controller
 
     // cart page
     public function cart($id){
-        $userId = auth()->user()->id;
+            $userId = auth()->user()->id;
 
-        $userData = Cart::select('carts.*', 'users.id', 'users.address')
-                ->join('users', 'carts.user_id', 'users.id')
-                ->where('user_id', $id)
-                ->first();
+            $userData = Cart::select('carts.*', 'users.id', 'users.address')
+                    ->join('users', 'carts.user_id', 'users.id')
+                    ->where('user_id', $id)
+                    ->first();
 
-        $product = Cart::select('carts.*', 'products.product_name', 'products.price', 'products.image')
-                ->join('products', 'carts.product_id', 'products.product_id')
-                ->where('user_id', $id)
-                ->paginate(7);
+            $product = Cart::select('carts.*', 'products.product_name', 'products.price', 'products.image')
+                    ->join('products', 'carts.product_id', 'products.product_id')
+                    ->where('user_id', $id)
+                    ->paginate(7);
 
-        $price = Cart::select('carts.*', 'product.price')
-                ->join('products', 'carts.product_id', 'products.product_id')
-                ->where('user_id', $id)
-                ->sum(DB::raw('products.price * carts.quantity'));
+            $price = Cart::select('carts.*', 'product.price')
+                    ->join('products', 'carts.product_id', 'products.product_id')
+                    ->where('user_id', $id)
+                    ->sum(DB::raw('products.price * carts.quantity'));
 
-        return view('customer.cart')->with(['product' => $product, 'userData' => $userData, 'totalPrice' => $price]);
+            $status = count($product) == 0 ? 0 : 1;
+
+            return view('customer.cart')->with(['product' => $product, 'userData' => $userData, 'totalPrice' => $price, 'status' => $status]);
     }
 
     // delete cart process

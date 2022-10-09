@@ -8,21 +8,30 @@
                 <div class="position-sticky fs-5">
                     <div class="list-group list-group-flush mx-3 mt-4">
                         <div class="dropdown">
-                            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-dark dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-list"></i> Category
                             </button>
                             <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ route('user#shopPage') }}" class="dropdown-item">All</a>
+                                </li>
                             @foreach ($category as $item)
                                 <li>
-                                    <a class="dropdown-item" href="#">{{ $item->cateogry_name }}</a>
+                                    <a class="dropdown-item" href="{{ route('user#categorySearch', $item->category_id) }}" value="{{ $item->cateogry_name }}">{{ $item->cateogry_name }}</a>
                                 </li>
                             @endforeach
                             </ul>
                         </div>
                     </div>
-                    <div class="list-group list-group-flush mx-3 mt-4">
-                        <button class="btn btn-dark"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
-                    </div>
+                    <form action="{{ route('user#productSearch') }}" method="get">
+                        @csrf
+                        <div class="d-flex list-group list-group-flush mx-3 mt-4">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="keyword" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-dark" type="submit" id="button-addon2">Button</button>
+                              </div>
+                        </div>
+                    </form>
                     <div class="list-group list-group-flush mx-3 mt-4">
                         <a href="{{ route('user#cart', Auth::user()->id) }}">
                             <button class="btn btn-dark w-100" type="button"><i class="fa-solid fa-cart-shopping"></i> Cart</button>
@@ -30,7 +39,7 @@
                     </div>
                     <div class="list-group list-group-flush mx-3 mt-4">
                         <a href="{{ route('user#transactionPage', Auth::user()->id) }}">
-                            <button class="btn btn-dark"><i class="fa-solid fa-sack-dollar"></i> Transaction</button>
+                            <button class="btn btn-dark w-100"><i class="fa-solid fa-sack-dollar"></i> Transaction</button>
                         </a>
                     </div>
                 </div>
@@ -72,6 +81,9 @@
                 </div>
                 @endforeach
             </div>
+        </div>
+        <div class="">
+            {{ $product->links() }}
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -47,5 +48,13 @@ class CategoryController extends Controller
         Category::where('category_id', $id)->update(['cateogry_name' => $editName]);
 
         return redirect()->route('admin#categoryPage')->with(['updated'=>"Category Updated!"]);
+    }
+
+    // category search (user)
+    public function categorySearch($id){
+        $data = Product::where('category_id', $id)->paginate(8);
+        $category = Category::get();
+
+        return view('customer.shop')->with(['product' => $data, 'category' => $category]);
     }
 }

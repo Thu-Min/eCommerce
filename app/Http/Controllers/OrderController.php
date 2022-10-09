@@ -36,12 +36,14 @@ class OrderController extends Controller
 
         Order::insert($data);
 
+        Cart::where('user_id', $id)->delete();
+
         return redirect()->route('user#shopPage')->with(['confirmed' => 'Payment Confirmed!']);
     }
 
     // transaction page (user)
     public function transactionPage($id) {
-        $data = Order::where('user_id', $id)->get();
+        $data = Order::where('user_id', $id)->paginate(10);
 
         return view('customer.transaction')->with(['data' => $data]);
     }

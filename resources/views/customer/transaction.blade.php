@@ -29,11 +29,17 @@
                             @endforeach
                         </tbody>
                         <tfoot>
-                            {{-- <div class="">
-                                {{ $data->links() }}
-                            </div> --}}
+
                         </tfoot>
                     </table>
+                    <div class="px-2 pb-2">
+                        <a href="{{ route('user#shopPage') }}">
+                            <button class="btn btn-primary">Back</button>
+                        </a>
+                        <div class="">
+                            {{ $data->links() }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
