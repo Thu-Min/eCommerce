@@ -15,6 +15,29 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    {{-- <script>
+        function callbackThen(response){
+            // read promise object
+            response.json().then(function(data) {
+                console.log(data);
+                if(data.success && data.score > 0.5) {
+                    console.log('valid source');
+                } else {
+                    document.getElementById('loginForm').addEventListener('submit', function(event) {
+                        event.preventDafault();
+                        alert('recaptcha error. Stop from submission.');
+                    });
+                }
+            });
+        }
+        function callbackCatch(error) {
+            console.log('Error: ' + error);
+        }
+    </script>
+    {!! htmlScriptTagJsApi([
+        'callback_then' => 'callbackThen',
+        'callback_catch' => 'callbackCatch',
+    ]) !!} --}}
 </head>
 <body>
     {{-- <div id="app">

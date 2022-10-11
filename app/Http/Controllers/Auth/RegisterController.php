@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'phone' => ['required'],
             'address' => ['required'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'g-recaptcha-response' => 'required|captcha'
         ]);
     }
 
