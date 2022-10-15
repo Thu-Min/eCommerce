@@ -71,6 +71,13 @@ class ProductController extends Controller
         $filename = uniqid() . $file->getClientOriginalName();
         $file->move(public_path() . '/product_album', $filename);
 
+        $dbData = Porduct::where('product_id', $id)->first();
+        $dbFileName = $dbData['image'];
+
+        if(File::exists(public_path(). '/product_album/' . $dbFileName)) {
+            File::delete(public_path(). '/product_album/' . $dbFileName);
+        }
+
         $data = $this->getProductDetails($request, $filename);
 
         Product::where('product_id', $id)->update($data);
